@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="br_stocks_fundamentus",
+    name="brfundamentus",
     version="0.0.1",
     author="renanmath",
     author_email="renanmath13@gmail.com",
