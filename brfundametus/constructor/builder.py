@@ -2,7 +2,7 @@ import pandas as pd
 import math
 import os
 from typing import Optional
-from constructor import ResquestBuilder
+from brfundametus.constructor import ResquestBuilder
 
 
 class StockInfoConstructor:
@@ -275,8 +275,6 @@ class StockInfoConstructor:
 
 
 if __name__ == "__main__":
-    import json
-
     constructor = StockInfoConstructor()
     info = constructor.dict_info
 

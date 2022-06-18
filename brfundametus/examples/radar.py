@@ -1,4 +1,4 @@
-from src import StockInfo
+from brfundametus.src import StockInfo
 from copy import copy
 
 """
