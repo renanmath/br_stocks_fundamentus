@@ -6,4 +6,4 @@ It provides the fair price of a stock according to three valuation strategies: G
 The basic information is collected form [statusinvest web site](https://statusinvest.com.br/). The package basically perform some calculations to find the valuations.
 Once the valuation information is obtained, one can use it to filter the stocks according to personal criteria. 
 
-See an example of how to use the package [here](examples/radar.py). 
+See an example of how to use the package [here](brfundamentus/examples/radar.py). 
