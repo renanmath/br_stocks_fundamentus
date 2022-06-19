@@ -1,4 +1,4 @@
-from brfundametus.constructor import StockInfoConstructor
+from brfundamentus.constructor import StockInfoConstructor
 from typing import List, Dict
 
 

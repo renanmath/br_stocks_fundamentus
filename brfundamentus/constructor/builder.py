@@ -2,7 +2,7 @@ import pandas as pd
 import math
 import os
 from typing import Optional
-from brfundametus.constructor import ResquestBuilder
+from brfundamentus.constructor import ResquestBuilder
 
 
 class StockInfoConstructor:
