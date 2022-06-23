@@ -1,6 +1,6 @@
 import pandas as pd
 import math
-import os
+import requests
 from typing import Optional
 from brfundamentus.constructor import ResquestBuilder
 
@@ -9,7 +9,7 @@ class StockInfoConstructor:
     MARKET_RISK = 0.15
     MAX_PL = 40
     MIN_LIQUIDITY = 0.19
-    BANKS_PATH = os.path.abspath("../data/bancos_e_seguradoras.txt")
+    BANKS_PATH = "https://raw.githubusercontent.com/renanmath/br_stocks_fundamentus/main/brfundamentus/data/bancos_e_seguradoras.txt"
 
     """
     Class responsible to construct the dataframe with all the infomation of fundamentalist indicators
@@ -17,6 +17,8 @@ class StockInfoConstructor:
     """
 
     def __init__(self) -> None:
+
+        self.__banks_tickers = self.__get_banks_tickers()
 
         self.__request_builder = ResquestBuilder()
 
@@ -70,7 +72,7 @@ class StockInfoConstructor:
 
         copy_data = self.__stocks_table.copy(deep=True)
 
-        banks_index = [t for t in copy_data.index if t[:4] in self.__get_banks_tickers()]
+        banks_index = [t for t in copy_data.index if t[:4] in self.__banks_tickers]
 
         copy_data.drop(banks_index, inplace=True)
 
@@ -84,10 +86,10 @@ class StockInfoConstructor:
         return copy_data
 
     def __get_banks_tickers(self):
-        with open(self.BANKS_PATH, "r") as file:
-            lines = file.readlines()
+        response = requests.get(self.BANKS_PATH)
+        lines = response.text.split("\n")
 
-        return [ticker[:4] for ticker in lines]
+        return lines
 
     def __treat_original_data(self, original_data: pd.DataFrame):
         """
